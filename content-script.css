@@ -1,0 +1,17 @@
+.lw-selected {
+    border:3px dashed red;
+    border-radius: 3px;
+    padding:0.03em 0.25em;
+    scroll-margin-top: 6rem;
+}
+span.lw-parliamentarian {
+    background-color: lightgreen;
+    padding:0.1em 0.2em;
+}
+span.lw-parliamentarian::after {
+    content: "✅";
+}
+span.lw-lobbyist {
+    background-color: thistle;
+    padding:0.1em 0.2em;
+}
