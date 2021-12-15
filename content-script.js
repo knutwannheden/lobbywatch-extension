@@ -2,13 +2,24 @@ function csv_to_regex_array(csv) {
     return csv
         .split(/\r?\n\s*/)
         .filter(n => n.length > 0)
+        .map(n => n.replace('Delphine', 'Délphine'))
+        .map(n => n.replace('Bellaiche', 'Bellaïche'))
+        .map(n => n.replace(/é/, '[eé]'))
+        .map(n => n.replace(/è/, '[eè]'))
+        .map(n => n.replace(/à/, '[aà]'))
+        .map(n => n.replace(/ï/, '[iï]'))
         .map(n => n.split(','))
         .filter(n => n.length === 2)
         .map(n => {
+            if ((i = n[1].search(/[- ]/)) === -1)
+                return n;
+            return [n[0], n[1].replace(/[- ](.*)/, '([- ]$1)?')];
+        })
+        .map(n => {
             if ((i = n[0].indexOf(' ')) === -1)
-                return '\\b' + n[0] + '\\s+' + n[1] + '\\b' + '|' + '\\b' + n[1] + ',?\\s+' + n[0] + '\\b';
-            return '\\b' + n[0].substring(0, i) + '(?:' + n[0].substring(i) + ')?\\s+' + n[1] + '\\b' + '|'
-                + '\\b' + n[1] + ',?\\s+' + n[0].substring(0, i) + '(?:' + n[0].substring(i) + ')?\\b';
+                return '\\b' + n[0] + '\\s*' + n[1] + '\\b' + '|' + '\\b' + n[1] + ',?\\s*' + n[0] + '\\b';
+            return '\\b' + n[0].substring(0, i) + '(?:' + n[0].substring(i) + ')?\\s*' + n[1] + '\\b' + '|'
+                + '\\b' + n[1] + ',?\\s*' + n[0].substring(0, i) + '(?:' + n[0].substring(i) + ')?\\b';
         })
         .join('|');
 }
@@ -110,7 +121,7 @@ Hans-Ueli,Vogt
 Hans,Stöckli
 Hans,Wicki
 Hansjörg,Knecht
-Heidi,Z'graggen
+Heidi,Z['’]?graggen
 Heinz,Siegenthaler
 Ida,Glanzmann-Hunkeler
 Irène,Kälin
@@ -295,6 +306,7 @@ Andreas,Lustenberger
 Andreas,Richner
 Andreas,Wyss
 Angelo,Geninazzi
+Anna,De Quervain
 Anna,Frey
 Anne,Dousse
 Annette,Walder
@@ -447,7 +459,7 @@ Lorenz,Furrer
 Louis,Perron
 Luc,Leumann
 Luc,Thomas
-Luca ,Boog
+Luca,Boog
 Lucius,Dürr
 Lukas,Aecherli
 Lukas,Wegmüller
@@ -474,7 +486,7 @@ Martin,Rufer
 Martina Teresa,Würth
 Martina,Novak
 Martina,Vieli
-Martine ,Cottier-Chassot
+Martine,Cottier-Chassot
 Massimo,Suter
 Matthias P.A.,Müller
 Matthias,Dietrich
@@ -520,7 +532,7 @@ Patrick,Mayer
 Patrizia,Lehmann
 Paul Robert,Waldmann
 Paul,Mori
-Pentti ,Aellig
+Pentti,Aellig
 Peter Alois,Metzinger
 Peter Eugen Seraphin,Saxenhofer
 Peter,Hug
@@ -532,7 +544,6 @@ Philippe David Martin,Kühni
 Philippe,Miauton
 Philippe,Zahno
 Pierre,Zwahlen
-Quervain Anna,De
 Raimund,Rodewald
 Raphaël,Bez
 Rebecca,Joly
