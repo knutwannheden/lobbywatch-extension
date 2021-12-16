@@ -11,21 +11,19 @@ chrome.commands.onCommand.addListener(async (command) => {
     let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
     if (command === 'show-next') {
-        chrome.scripting.executeScript({
-            target: { tabId: tab.id },
-            func: highlightNext,
-            args: [1]
-        });
+        chrome.tabs.sendMessage(tab.id, {action:'select-next'});
+    } else if (command === 'show-previous') {
+        chrome.tabs.sendMessage(tab.id, {action:'select-previous'});
     } else if (command === 'show-previous') {
         chrome.scripting.executeScript({
             target: { tabId: tab.id },
-            func: highlightNext,
+            func: moveSelection,
             args: [-1]
         });
     }
 });
 
-function highlightNext(dir) {
+function moveSelection(dir) {
     let elements = Array.from(document.getElementsByClassName('lw-person'));
     current = elements.find(e => e.classList.contains('lw-selected'));
     var element = null;
@@ -52,7 +50,6 @@ function highlightNext(dir) {
 }
 
 chrome.webNavigation.onCompleted.addListener((details) => {
-    console.log('completed');
     chrome.storage.local.get("enabled", ({ enabled }) => {
         if (enabled) {
             inject(details.tabId, true);
@@ -79,7 +76,6 @@ chrome.webNavigation.onCompleted.addListener((details) => {
 // });
 
 chrome.webNavigation.onHistoryStateUpdated.addListener((details) => {
-    console.log('history state updated');
     chrome.storage.local.get("enabled", ({ enabled }) => {
         if (enabled) {
             inject(details.tabId, true);
@@ -94,13 +90,14 @@ chrome.tabs.onActivated.addListener((activeInfo) => {
 });
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-    if (msg === 'toggle') {
+    if (msg.action === 'toggle') {
         chrome.storage.local.get("enabled", async ({ enabled }) => {
             chrome.action.setIcon({ "path": (enabled ? 'images/lw16gray.png' : 'images/lobbywatch16.png') });
             chrome.storage.local.set({ "enabled": !enabled });
             let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-            if (tab !== undefined)
+            if (tab)
                 inject(tab.id, !enabled);
+            sendResponse(true);
         });
     }
 });
@@ -140,10 +137,10 @@ function inject(tabId, enabled) {
 
 function addHighlighting(tabId) {
     setTimeout(function () {
-        chrome.tabs.sendMessage(tabId, 'match', async (response) => {
-            if (response !== undefined) {
+        chrome.tabs.sendMessage(tabId, {action:'match'}, async (response) => {
+            if (response) {
                 let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-                if (tab !== undefined && tab.id === tabId)
+                if (tab && tab.id === tabId)
                     chrome.action.setBadgeText({ text: response.toString() });
             }
         });
@@ -153,4 +150,5 @@ function addHighlighting(tabId) {
 function removeHighlighting() {
     let elements = Array.from(document.getElementsByClassName('lw-person'));
     elements.forEach(e => { e.classList.remove('lw-person'); e.classList.remove('lw-selected'); e.classList.remove('lw-parliamentarian'); e.classList.remove('lw-lobbyist'); })
+    chrome.runtime.sendMessage({ event: "matched", data: [] });
 }

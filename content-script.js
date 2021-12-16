@@ -629,9 +629,8 @@ Yves Samuel,Weidmann
 Yvonne,Ribi
 `);
 
-// function to recursively tag all matching names using a span and finally returning total number of matches
-function highlight(element) {
-    var res = 0;
+// function to recursively tag all matching names using a span
+function highlight(element, matches) {
     var nodes = element.childNodes;
     for (var i = nodes.length; i-- > 0;) {
         const e = nodes[i];
@@ -640,45 +639,87 @@ function highlight(element) {
                 var re = new RegExp([parlamentarians, lobbyists][k], 'gi');
                 const lwClass = k === 0 ? 'lw-parliamentarian' : 'lw-lobbyist';
                 var match;
-                var matches = [];
+                var localMatches = [];
                 while (match = re.exec(e.data))
-                    matches.push(match);
-                for (var j = matches.length; j-- > 0;) {
-                    match = matches[j];
-                    var newNode = document.createElement("span");
-                    newNode.classList.add(lwClass);
-                    newNode.classList.add('lw-person');
-                    newNode.textContent = match[0];
+                localMatches.push(match);
+                for (var j = localMatches.length; j-- > 0;) {
+                    match = localMatches[j];
+                    var span = document.createElement("span");
+                    span.classList.add(lwClass);
+                    span.classList.add('lw-person');
+                    span.setAttribute('data-lw', matches.length);
+                    span.textContent = match[0];
                     e.splitText(match.index);
                     e.nextSibling.splitText(match[0].length);
-                    e.parentNode.replaceChild(newNode, e.nextSibling);
-                    res++;
+                    e.parentNode.replaceChild(span, e.nextSibling);
+                    matches.push(span);
                 }
             }
         } else if (e.nodeType === 1 && e.tagName.toLowerCase() === 'span' && e.classList.contains('lw-person')) {
             // empty to stop repeated nested tagging when running the highlighting multiple times
-            res++;
-        } else if (e.nodeType === 1 && e.tagName.toLowerCase() === 'script') {
-            // don't descend into scripts
+            e.setAttribute('data-lw', matches.length);
+            matches.push(e);
+        } else if (e.nodeType === 1 && ['script', 'style'].includes(e.tagName.toLowerCase())) {
+            // don't descend into JavaScript and CSS
         } else {
-            res += highlight(e);  // Not a text node or leaf, so check it's children
+            highlight(e, matches);  // Not a text node or leaf, so check it's children
         }
     }
-    return res;
 };
 
+function unselectElement(element) {
+    while (element && element.classList) {
+        element.classList.remove('lw-selected');
+        element = element.parentNode;
+    }
+}
+
+function selectElement(element) {
+    element.classList.add('lw-selected');
+    element.scrollIntoViewIfNeeded();
+
+    if (element.offsetParent === null) {
+        while (element && element.offsetParent === null) {
+            element = element.parentNode;
+        }
+        element.classList.add('lw-selected');
+        element.scrollIntoViewIfNeeded();
+    }
+}
+
+function moveSelection(dir) {
+    let elements = Array.from(document.getElementsByClassName('lw-person'));
+    current = elements.find(e => e.classList.contains('lw-selected'));
+    var element = null;
+    if (!current) {
+        element = elements[0];
+    } else {
+        element = elements[(elements.indexOf(current) + elements.length + dir) % elements.length];
+    }
+    unselectElement(current);
+    selectElement(element);
+}
+
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-    if (msg === 'ping') {
+    if (msg.action === 'ping') {
         sendResponse(true);
-    } else if (msg === 'match') {
+    } else if (msg.action === 'match') {
         // FIXME find some way to remember if highlighting was performed already since last change
         // maybe using MutationObserver API
         // see https://stackoverflow.com/questions/61314922/mutationobserver-not-picking-up-on-child-nodes
         // possibly to be performed as side-effect of highlight() function
-        const matchCount = highlight(document.body);
-        sendResponse(matchCount);
-    } else if (msg === 'details') {
+        let matches = [];
+        highlight(document.body, matches);
+        sendResponse(matches.length);
+    } else if (msg.action === 'get-details') {
         let elements = Array.from(document.getElementsByClassName('lw-person'));
-        sendResponse(elements.map(e => e.textContent));
+        sendResponse(elements.map(e => { return { 'seqNr': e.getAttribute('data-lw'), 'name': e.textContent } }));
+    } else if (msg.action === 'select-person-by-seq-nr') {
+        unselectElement(document.querySelector("span.lw-selected"));
+        selectElement(document.querySelector("span.lw-person[data-lw='" + msg.seqNr + "']"));
+    } else if (msg.action === 'select-next') {
+        moveSelection(1);
+    } else if (msg.action === 'select-previous') {
+        moveSelection(-1);
     }
 });
