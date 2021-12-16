@@ -11,9 +11,9 @@ chrome.commands.onCommand.addListener(async (command) => {
     let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
     if (command === 'show-next') {
-        chrome.tabs.sendMessage(tab.id, {action:'select-next'});
+        chrome.tabs.sendMessage(tab.id, { action: 'select-next' });
     } else if (command === 'show-previous') {
-        chrome.tabs.sendMessage(tab.id, {action:'select-previous'});
+        chrome.tabs.sendMessage(tab.id, { action: 'select-previous' });
     } else if (command === 'show-previous') {
         chrome.scripting.executeScript({
             target: { tabId: tab.id },
@@ -107,12 +107,12 @@ function inject(tabId, enabled) {
         if (enabled) {
             chrome.action.setBadgeText({ text: '' });
 
-            if (registered.length === 0 && enabled) {
+            if (registered.length === 0) {
                 // install script
                 chrome.scripting.registerContentScripts([{
                     id: 'lobbywatch-highlighting',
-                    js: ['content-script.js'],
-                    css: ['content-script.css'],
+                    js: ['content-script.js', 'popper.min.js', 'tippy-bundle.umd.min.js'],
+                    css: ['content-script.css', 'tippy.css'],
                     matches: ['<all_urls>'],
                     runAt: 'document_idle'
                 }],
@@ -137,7 +137,7 @@ function inject(tabId, enabled) {
 
 function addHighlighting(tabId) {
     setTimeout(function () {
-        chrome.tabs.sendMessage(tabId, {action:'match'}, async (response) => {
+        chrome.tabs.sendMessage(tabId, { action: 'match' }, async (response) => {
             if (response) {
                 let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
                 if (tab && tab.id === tabId)
