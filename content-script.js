@@ -632,36 +632,41 @@ Yvonne,,Ribi,304
 
 // function to recursively tag all matching names using a span
 function highlight(element, matches) {
-    var nodes = element.childNodes;
+    let nodes = element.childNodes;
     for (var i = nodes.length; i-- > 0;) {
         const e = nodes[i];
         if (e.nodeType === 3) {
             for (var k = 2; k-- > 0;) {
                 var re = new RegExp([parlamentarians, lobbyists][k], 'gid');
                 const lwClass = k === 0 ? 'lw-parliamentarian' : 'lw-lobbyist';
-                var match;
-                var localMatches = [];
+                let match;
+                let localMatches = [];
                 while (match = re.exec(e.data)) {
                     localMatches.push(match);
                 }
                 for (var j = localMatches.length; j-- > 0;) {
                     match = localMatches[j];
-                    const id = Object.entries(match.groups).find(([k, v]) => v)[0];
-                    var span = document.createElement("span");
+                    let span = document.createElement("span");
                     span.classList.add(lwClass);
                     span.classList.add('lw-person');
-                    span.setAttribute('data-lw-seqnr', matches.length);
-                    span.setAttribute('data-lw-id', id);
+                    const id = Object.entries(match.groups).find(([k, v]) => v)[0].substring(1);
+                    span.setAttribute('data-lw', matches.length + ';' + id);
                     span.textContent = match[0];
                     e.splitText(match.index);
                     e.nextSibling.splitText(match[0].length);
                     e.parentNode.replaceChild(span, e.nextSibling);
                     matches.push(span);
+                    console.log(span);
                 }
             }
-        } else if (e.nodeType === 1 && e.tagName.toLowerCase() === 'span' && e.classList.contains('lw-person')) {
+        } else if (e.nodeType === 1 && e.tagName.toLowerCase() === 'span' && e.hasAttribute('data-lw')) {
             // empty to stop repeated nested tagging when running the highlighting multiple times
-            e.setAttribute('data-lw-seqnr', matches.length);
+            console.log(e);
+            let dataLw = e.getAttribute('data-lw');
+            // set data-lw attribute again in case DOM was changed
+            if (!dataLw.startsWith(matches.length + ';')) {
+                e.setAttribute('data-lw', matches.length + dataLw.substring(dataLw.indexOf(';')));
+            }
             matches.push(e);
         } else if (e.nodeType === 1 && ['script', 'style'].includes(e.tagName.toLowerCase())) {
             // don't descend into JavaScript and CSS
@@ -719,7 +724,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         tippy('.lw-person', {
             content(reference) {
                 const type = reference.classList.contains('lw-parliamentarian') ? 'parlamentarier' : 'zutrittsberechtigter';
-                const id = reference.getAttribute('data-lw-id').substring(1);
+                const id = reference.getAttribute('data-lw').substring(reference.getAttribute('data-lw').indexOf(';') + 1);
                 return `<a href="https://lobbywatch.ch/de/daten/${type}/${id}">${reference.textContent}</a>`;
             },
             allowHTML: true,
@@ -728,10 +733,10 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         });
     } else if (msg.action === 'get-details') {
         let elements = Array.from(document.getElementsByClassName('lw-person'));
-        sendResponse(elements.map(e => { return { 'seqNr': e.getAttribute('data-lw-seqnr'), 'name': e.textContent } }));
+        sendResponse(elements.map(e => { return { 'seqNr': e.getAttribute('data-lw'), 'name': e.textContent } }));
     } else if (msg.action === 'select-person-by-seq-nr') {
         unselectElement(document.querySelector("span.lw-selected"));
-        selectElement(document.querySelector("span.lw-person[data-lw-seqnr='" + msg.seqNr + "']"));
+        selectElement(document.querySelector("span.lw-person[data-lw='" + msg.seqNr + "']"));
     } else if (msg.action === 'select-next') {
         moveSelection(1);
     } else if (msg.action === 'select-previous') {
