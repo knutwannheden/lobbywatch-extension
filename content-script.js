@@ -630,13 +630,13 @@ Yves Samuel,,Weidmann,728
 Yvonne,,Ribi,304
 `);
 
-function highlightInternal(e, text, matches) {
+function highlightInternal(e, matches) {
     for (var k = 2; k-- > 0;) {
         var re = new RegExp([parlamentarians, lobbyists][k], 'gid');
         const lwClass = k === 0 ? 'lw-parliamentarian' : 'lw-lobbyist';
         let match;
         let localMatches = [];
-        while (match = re.exec(text)) {
+        while (match = re.exec(e.textContent)) {
             localMatches.push(match);
         }
         for (var j = localMatches.length; j-- > 0;) {
@@ -669,7 +669,7 @@ function highlight(element, matches) {
     for (var i = nodes.length; i-- > 0;) {
         const e = nodes[i];
         if (e.nodeType === 3) {
-            highlightInternal(e, e.data, matches);
+            highlightInternal(e, matches);
         } else if (e.nodeType === 1 && e.hasAttribute('data-lw')) {
             // empty to stop repeated nested tagging when running the highlighting multiple times
             let dataLw = e.getAttribute('data-lw');
@@ -685,7 +685,7 @@ function highlight(element, matches) {
             let matchCountBefore = matches.length;
             highlight(e, matches);
             if (matches.length === matchCountBefore) {
-                highlightInternal(e, e.textContent, matches);
+                highlightInternal(e, matches);
             }
         } else {
             highlight(e, matches);  // Not a text node or leaf, so check it's children
