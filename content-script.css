@@ -4,14 +4,14 @@
     padding:0.03em 0.25em;
     scroll-margin-top: 6rem;
 }
-span.lw-parliamentarian {
-    background-color: lightgreen;
+.lw-parliamentarian, .lw-parliamentarian * {
+    background-color: lightgreen !important;
     padding:0.1em 0.2em;
 }
-/* span.lw-parliamentarian::after {
+/* .lw-parliamentarian::after {
     content: "✅";
 } */
-span.lw-lobbyist {
-    background-color: thistle;
+.lw-lobbyist, .lw-lobbyist * {
+    background-color: thistle !important;
     padding:0.1em 0.2em;
 }

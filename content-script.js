@@ -630,38 +630,48 @@ Yves Samuel,,Weidmann,728
 Yvonne,,Ribi,304
 `);
 
+function highlightInternal(e, text, matches) {
+    for (var k = 2; k-- > 0;) {
+        var re = new RegExp([parlamentarians, lobbyists][k], 'gid');
+        const lwClass = k === 0 ? 'lw-parliamentarian' : 'lw-lobbyist';
+        let match;
+        let localMatches = [];
+        while (match = re.exec(text)) {
+            localMatches.push(match);
+        }
+        for (var j = localMatches.length; j-- > 0;) {
+            match = localMatches[j];
+            if (e.nodeType == 3) {
+                let span = document.createElement("span");
+                span.classList.add(lwClass);
+                span.classList.add('lw-person');
+                const id = Object.entries(match.groups).find(([k, v]) => v)[0].substring(1);
+                span.setAttribute('data-lw', matches.length + ';' + id);
+                span.textContent = match[0];
+                e.splitText(match.index);
+                e.nextSibling.splitText(match[0].length);
+                e.parentNode.replaceChild(span, e.nextSibling);
+                matches.push(span);
+            } else {
+                e.classList.add(lwClass);
+                e.classList.add('lw-person');
+                const id = Object.entries(match.groups).find(([k, v]) => v)[0].substring(1);
+                e.setAttribute('data-lw', matches.length + ';' + id);
+                matches.push(e);
+            }
+        }
+    }
+}
+
 // function to recursively tag all matching names using a span
 function highlight(element, matches) {
     let nodes = element.childNodes;
     for (var i = nodes.length; i-- > 0;) {
         const e = nodes[i];
         if (e.nodeType === 3) {
-            for (var k = 2; k-- > 0;) {
-                var re = new RegExp([parlamentarians, lobbyists][k], 'gid');
-                const lwClass = k === 0 ? 'lw-parliamentarian' : 'lw-lobbyist';
-                let match;
-                let localMatches = [];
-                while (match = re.exec(e.data)) {
-                    localMatches.push(match);
-                }
-                for (var j = localMatches.length; j-- > 0;) {
-                    match = localMatches[j];
-                    let span = document.createElement("span");
-                    span.classList.add(lwClass);
-                    span.classList.add('lw-person');
-                    const id = Object.entries(match.groups).find(([k, v]) => v)[0].substring(1);
-                    span.setAttribute('data-lw', matches.length + ';' + id);
-                    span.textContent = match[0];
-                    e.splitText(match.index);
-                    e.nextSibling.splitText(match[0].length);
-                    e.parentNode.replaceChild(span, e.nextSibling);
-                    matches.push(span);
-                    console.log(span);
-                }
-            }
-        } else if (e.nodeType === 1 && e.tagName.toLowerCase() === 'span' && e.hasAttribute('data-lw')) {
+            highlightInternal(e, e.data, matches);
+        } else if (e.nodeType === 1 && e.hasAttribute('data-lw')) {
             // empty to stop repeated nested tagging when running the highlighting multiple times
-            console.log(e);
             let dataLw = e.getAttribute('data-lw');
             // set data-lw attribute again in case DOM was changed
             if (!dataLw.startsWith(matches.length + ';')) {
@@ -670,6 +680,13 @@ function highlight(element, matches) {
             matches.push(e);
         } else if (e.nodeType === 1 && ['script', 'style'].includes(e.tagName.toLowerCase())) {
             // don't descend into JavaScript and CSS
+        } else if (e.nodeType === 1 && ['tr'].includes(e.tagName.toLowerCase())) {
+            // attempt to match table data
+            let matchCountBefore = matches.length;
+            highlight(e, matches);
+            if (matches.length === matchCountBefore) {
+                highlightInternal(e, e.textContent, matches);
+            }
         } else {
             highlight(e, matches);  // Not a text node or leaf, so check it's children
         }
@@ -735,8 +752,8 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         let elements = Array.from(document.getElementsByClassName('lw-person'));
         sendResponse(elements.map(e => { return { 'seqNr': e.getAttribute('data-lw'), 'name': e.textContent } }));
     } else if (msg.action === 'select-person-by-seq-nr') {
-        unselectElement(document.querySelector("span.lw-selected"));
-        selectElement(document.querySelector("span.lw-person[data-lw='" + msg.seqNr + "']"));
+        unselectElement(document.querySelector(".lw-selected"));
+        selectElement(document.querySelector(".lw-person[data-lw='" + msg.seqNr + "']"));
     } else if (msg.action === 'select-next') {
         moveSelection(1);
     } else if (msg.action === 'select-previous') {
