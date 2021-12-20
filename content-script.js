@@ -1,5 +1,5 @@
 function csv_to_regex_array(csv) {
-    return '\\b' + csv
+    return '\\b(?:' + csv
         .split(/\r?\n\s*/)
         .filter(n => n.length > 0)
         .map(n => n.replace('Delphine', 'Délphine'))
@@ -26,7 +26,7 @@ function csv_to_regex_array(csv) {
                 result += '|' + n[1] + '\\s*' + n[2] + '|' + n[2] + ',?\\s*' + n[1];
             return result + ')';
         })
-        .join('|') + '\\b';
+        .join('|') + ')\\b';
 }
 
 // names from parlamentarians.csv
