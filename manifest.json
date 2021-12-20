@@ -1,7 +1,7 @@
 {
     "name": "Lobbywatch Extension",
     "description": "Highlights name of parliamentarians and lobbyists on page",
-    "version": "1.4",
+    "version": "1.5",
     "manifest_version": 3,
     "permissions": ["storage", "activeTab", "scripting", "webNavigation"],
     "host_permissions": ["<all_urls>"],
