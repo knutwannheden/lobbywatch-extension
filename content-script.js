@@ -4,10 +4,14 @@ function csv_to_regex_array(csv) {
         .filter(n => n.length > 0)
         .map(n => n.replace('Delphine', 'Délphine'))
         .map(n => n.replace('Bellaiche', 'Bellaïche'))
+        .map(n => n.replace(/à/, '[aà]'))
+        .map(n => n.replace(/á/, '[aá]'))
+        .map(n => n.replace(/ç/, '[cç]'))
         .map(n => n.replace(/é/, '[eé]'))
         .map(n => n.replace(/è/, '[eè]'))
-        .map(n => n.replace(/à/, '[aà]'))
+        .map(n => n.replace(/ë/, '[eë]'))
         .map(n => n.replace(/ï/, '[iï]'))
+        .map(n => n.replace(/ò/, '[oò]'))
         .map(n => n.split(','))
         .filter(n => n.length === 4)
         .map(n => {
@@ -205,7 +209,7 @@ Mustafa,,Atici,368
 Nadine,,Masshardt,144
 Nadja,,Umbricht Pieren,167
 Nicolas,,Walder,422
-Nicolo,,Paganini,333
+Nicolò Alessio,,Paganini,333
 Niklaus-Samuel,Nik,Gugger,327
 Olivier,,Feller,79
 Olivier,,Français,86
@@ -688,6 +692,7 @@ function highlight(element, matches) {
                 highlightInternal(e, matches);
             }
         } else {
+            // TODO fix pages with last name in <strong> (<em> or <b>) like https://www.hagel.ch/de/ueber-uns/verwaltungsrat/
             highlight(e, matches);  // Not a text node or leaf, so check it's children
         }
     }
