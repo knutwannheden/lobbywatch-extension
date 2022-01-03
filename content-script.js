@@ -11,7 +11,9 @@ function csv_to_regex_array(csv) {
         .map(n => n.replace(/è/, '[eè]'))
         .map(n => n.replace(/ë/, '[eë]'))
         .map(n => n.replace(/ï/, '[iï]'))
+        .map(n => n.replace(/î/, '[iî]'))
         .map(n => n.replace(/ò/, '[oò]'))
+        .map(n => n.replace(/ô/, '[oô]'))
         .map(n => n.split(','))
         .filter(n => n.length === 4)
         .map(n => {
@@ -126,7 +128,6 @@ Gregor A.,,Rutz,182
 Greta,,Gysin,396
 Hannes,,Germann,227
 Hans-Peter,,Portmann,248
-Hans-Ueli,,Vogt,308
 Hans,,Stöckli,38
 Hans,,Wicki,321
 Hansjörg,,Knecht,131
@@ -201,7 +202,7 @@ Meret,,Schneider,350
 Michaël,,Buffat,270
 Michael,,Graber,427
 Michael,,Töngi,334
-Michel,,Matter,407
+Michel Alexandre,,Matter,407
 Mike,,Egger,341
 Min Li,,Marti,293
 Monika,,Rüegger,379
@@ -291,7 +292,6 @@ Alain,,Gut,799
 Alain,,Zwygart,866
 Alecs,,Recher,837
 Alena,,Weibel,438
-Alessandro,,Della Vedova,841
 Alex,,Fischer,69
 Alexander,,Meszmer,880
 Alexander,,Segert,145
@@ -303,7 +303,6 @@ Aliki,,Panayides,155
 Aline Sara,,Rampazzo,514
 Anders,,Gautschi,850
 André,,Kirchhofer,512
-André,,Marty,919
 André,,Vernay,528
 Andreas,,Binder,853
 Andreas,,Burgener,245
@@ -311,7 +310,6 @@ Andreas,,Hammer,428
 Andreas,,Hugi,348
 Andreas,,Lehner,874
 Andreas,,Lustenberger,927
-Andreas,,Richner,579
 Andreas,,Wyss,597
 Angelo,,Geninazzi,201
 Anna,,De Quervain,970
@@ -443,6 +441,7 @@ Jonas,,Glanzmann,126
 Josef,,Bollag,187
 Judith Lisa,,Hanhart,805
 Jules,,Aubert,801
+Julia,,Fischer,979
 Julien Boris,,Neruda,679
 Julien,,Repond,902
 Jürg,,Aschwanden,489
@@ -499,14 +498,17 @@ Matthias,,Dietrich,81
 Matthias,,Hui,886
 Matthias,,Humbel,835
 Max,,Hofmann,399
+Melo Esquerdo,,Falchi,976
 Michael Johann,,Frank,602
 Michael,,Bützer,905
 Michael,,Felber,917
 Michael,,Fust,493
 Michael,,Geissbühler,584
 Michael,,Ineichen,918
+Michael,,Köpfli,977
 Michael,,Schmid,284
 Michel Sandro,,Grunder,908
+Michel,,Darbellay,302
 Michel,,Rudin,807
 Michela,,Trisconi,356
 Michèle,,Andermatt,872
@@ -543,9 +545,9 @@ Peter Alois,,Metzinger,884
 Peter Eugen Seraphin,,Saxenhofer,376
 Peter,,Hug,959
 Peter,,Meier,701
-Philip Holmgaard,,Kristensen,287
 Philipp,,Mäder,935
 Philipp,,Niederberger,955
+Philipp,,Ryf,978
 Philippe David Martin,,Kühni,928
 Philippe,,Miauton,500
 Philippe,,Zahno,553
@@ -556,6 +558,7 @@ Rebecca,,Joly,901
 Regula,,Bühlmann,488
 Remco André,,Giovanoli,613
 Renate,,Hotz Schläpfer,123
+René,,Gerber,975
 René,,Jenny,617
 René,,Rall,251
 Reto,,Jaussi,479
@@ -599,14 +602,12 @@ Stefan,,Batzli,349
 Stefan,,Brupbacher,844
 Stefan,,Flückiger,736
 Stefan,,Jakob,137
-Stefan,,Kilchenmann,136
 Stefan,,Kunz,390
 Stefan,,Vannoni,80
 Stefano,,Kunz,663
-Stephan,,Pauli,934
 Sue,,Putallaz,861
 Tatiana,,Rezso,951
-Thomas Christian,,Berger,487
+Thomas Christian,Tom,Berger,487
 Thomas,,Borer,439
 Thomas,,Kähr,424
 Timotheus,,Bruderer,603
@@ -629,6 +630,7 @@ Verio Dante,,Pini,677
 Walter,,Stüdeli,130
 Werner,,Gartenmann,682
 Xavier,,Bertelletto,286
+Xavier,,Pilloud,264
 Yael,,Bloch,723
 Yves Samuel,,Weidmann,728
 Yvonne,,Ribi,304
