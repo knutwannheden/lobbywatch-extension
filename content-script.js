@@ -67,8 +67,8 @@ Beat,,Walti,251
 Benedikt,,Würth,345
 Benjamin,,Giezendanner,360
 Benjamin,,Roduit,331
+Brigitte Maria,,Häberli-Koller,228
 Brigitte,,Crottaz,330
-Brigitte,,Häberli-Koller,228
 Bruno,,Storni,420
 Bruno,,Walliser,309
 Carlo,,Sommaruga,192
@@ -86,11 +86,11 @@ Christian,,Lohr,14
 Christian,,Wasserfallen,210
 Christine,,Badertscher,355
 Christine,,Bulliard-Marbach,63
-Christophe,,Clivaz,383
+Christophe Charles,,Clivaz,383
 Claudia,,Friedl,89
 Corina,,Gredig,348
 Damian,,Müller,318
-Damien,,Cottier,388
+Damien Jacques André,,Cottier,388
 Daniel Karl,,Fässler,76
 Daniel Reuwen,,Jositsch,125
 Daniel,,Brélaz,269
@@ -99,17 +99,17 @@ David,,Zuberbühler,312
 Delphine,,Klopfenstein Broggini,403
 Denis,,de la Reussille,276
 Diana,,Gutjahr,328
-Doris,,Fiala,81
+Doris Yvonne,,Fiala,81
 Edith,,Graf-Litscher,103
 Elisabeth,,Baume-Schneider,401
 Elisabeth,,Schneider-Schneiter,188
-Emmanuel,,Amoos,428
+Emmanuel Didier,,Amoos,428
 Eric,,Nussbaumer,161
-Erich,,Ettlin,316
+Erich Ernst,,Ettlin,316
 Erich,,Hess,287
 Erich,,von Siebenthal,206
-Esther,,Friedli,356
-Eva,,Herzog,382
+Esther Barbara,,Friedli,356
+Eva Maria,,Herzog,382
 Fabian,,Molina,332
 Fabien,,Fivaz,395
 Fabio,,Regazzi,171
@@ -133,7 +133,7 @@ Hans,,Wicki,321
 Hansjörg,,Knecht,131
 Heidi,,Z'graggen,352
 Heinz,,Siegenthaler,256
-Ida,,Glanzmann-Hunkeler,97
+Ida Michaela,,Glanzmann-Hunkeler,97
 Irène,,Kälin,329
 Isabelle,,Chassot,429
 Isabelle,,Moret,15
@@ -144,21 +144,21 @@ Jacques,,Bourgeois,57
 Jacques,,Nicolet,298
 Jakob,,Stark,384
 Jean-Luc,,Addor,261
-Jean-Paul,,Gschwind,108
+Jean-Paul Joseph,,Gschwind,108
 Jean-Pierre,,Grin,104
-Johanna,,Gapany,381
-Jon,,Pult,378
+Johanna Maeva,,Gapany,381
+Jon Andri,,Pult,378
 Jörg,,Mäder,359
 Josef,,Dittli,315
 Judith,,Bellaiche,362
 Jürg,,Grossen,106
 Katharina,,Prelicz-Huber,411
-Kathrin,,Bertschy,53
+Kathrin Elisabeth,,Bertschy,53
 Katja,,Christ,369
 Kilian,,Baumann,358
 Kurt,,Egger,375
 Kurt,,Fluri,85
-Lars,,Guggisberg,391
+Lars Patrick,,Guggisberg,391
 Laurence,,Fehlmann Rielle,280
 Laurent,,Wehrli,310
 Leo,,Müller,149
@@ -167,7 +167,7 @@ Lilian,,Studer,372
 Lisa,,Mazzone,295
 Lorenz,,Hess,11
 Lorenzo,,Quadri,170
-Lukas,,Reimann,172
+Lukas Andreas,,Reimann,172
 Magdalena,,Martullo-Blocher,294
 Maja,,Riniker,415
 Manuel,,Strupler,387
@@ -183,8 +183,8 @@ Marie-France,,Roth Pasquier,417
 Marina,,Carobbio Guscetti,4
 Marionna,,Schlatter,349
 Markus,,Ritter,178
-Martin,,Bäumle,51
-Martin,,Candinas,65
+Martin Anton,,Candinas,65
+Martin Hans,,Bäumle,51
 Martin,,Haab,343
 Martin,,Landolt,132
 Martin,,Schmid,242
@@ -207,26 +207,26 @@ Mike,,Egger,341
 Min Li,,Marti,293
 Monika,,Rüegger,379
 Mustafa,,Atici,368
-Nadine,,Masshardt,144
+Nadine Désirée,,Masshardt,144
 Nadja,,Umbricht Pieren,167
 Nicolas,,Walder,422
 Nicolò Alessio,,Paganini,333
 Niklaus-Samuel,Nik,Gugger,327
 Olivier,,Feller,79
 Olivier,,Français,86
-Othmar,,Reichmuth,423
-Patricia,,von Falkenstein,430
+Othmar Alois,,Reichmuth,423
+Patricia Caroline Manuela,,von Falkenstein,430
 Paul,,Rechsteiner,36
-Peter,,Hegglin,317
+Peter Emil,,Schilliger,185
+Peter Josef Rudolf,,Hegglin,317
 Peter,,Keller,127
-Peter,,Schilliger,185
 Petra,,Gössi,101
 Philipp Matthias,,Bregy,340
 Philipp,,Kutter,337
-Philippe,,Bauer,266
+Philippe Edouard,,Bauer,266
 Philippe,,Nantermod,297
 Piero,,Marchesi,405
-Pierre-Alain,,Fridez,88
+Pierre-Alain Roger,,Fridez,88
 Pierre-André,,Page,299
 Pierre-Yves,,Maillard,351
 Pirmin Josef,,Bischof,219
@@ -243,12 +243,12 @@ Roger,,Nordmann,159
 Roland Rino,,Büchel,60
 Roland,,Fischer,82
 Ruedi,,Noser,160
-Ruth,,Humbel,12
+Ruth Cornelia,,Humbel,12
 Samira,,Marti,339
 Samuel,,Bendahan,323
 Sandra,,Locher Benguerel,397
 Sandra,,Sollberger,305
-Sarah,,Wyss,426
+Sarah Dominique,,Wyss,426
 Sibel,,Arslan,264
 Sidney,,Kamerzin,399
 Simon,,Stadler,419
@@ -261,7 +261,7 @@ Stefanie,,Heimgartner,394
 Susanne,,Vincenz-Stauffacher,361
 Tamara,,Funiciello,347
 Therese,,Schläpfer,344
-Thierry,,Burkart,273
+Thierry Paul,,Burkart,273
 Thomas Jan,,de Courten,6
 Thomas,,Aeschi,41
 Thomas,,Brunner,365
@@ -279,7 +279,7 @@ Verena,,Herzog,117
 Vincent,,Maitre,404
 Walter,,Wobmann,212
 Werner,,Salzmann,301
-Yves,,Nidegger,158
+Yves Robert,,Nidegger,158
 Yvette,,Estermann,75
 Yvonne,,Feri,80
 `);
@@ -304,10 +304,10 @@ Aline Sara,,Rampazzo,514
 Anders,,Gautschi,850
 André,,Kirchhofer,512
 André,,Vernay,528
+Andreas Cyrill,,Hugi,348
 Andreas,,Binder,853
 Andreas,,Burgener,245
 Andreas,,Hammer,428
-Andreas,,Hugi,348
 Andreas,,Lehner,874
 Andreas,,Lustenberger,927
 Andreas,,Wyss,597
@@ -352,18 +352,18 @@ Chico Angelo,,Koch,910
 Christian,,Neuhaus,836
 Christian,,Zünd,608
 Christof,,Dietler,120
-Christoph,,Kamber,941
+Christoph Martin,,Kamber,941
 Christoph,,Merkli,60
 Christoph,,Trummer,461
 Christophe,,Hans,467
 Claudio,,Kuster,176
-Cornelia,,Stamm Hurter,150
+Cornelia Elisabeth,,Stamm Hurter,150
 Cristina Maria,,Zanini Barzaghi,930
 Cynthia,,Lang,960
 Dagmar,,Rösler,887
+Daniel Josef,,Lampart,230
 Daniel Noël,,Bulliard,90
 Daniel,,Borner,332
-Daniel,,Lampart,230
 Daniel,,Piazza,897
 Daniel,,Wiener,317
 David Michael,,Schenker,907
@@ -374,25 +374,25 @@ David,,Stickelberger,84
 David,,Trachsel,958
 Diego,,Baratti,920
 Dina,,Spörri,913
+Dominik Christian,,Waser,877
 Dominik,,Gross,526
 Dominik,,Rohrer,574
-Dominik,,Waser,877
 Dominique,,Martin,593
 Dorothea,,Aebi-Keller,929
 Elena Antonella,,Strozzi,204
+Elias Manuel,,Maier,622
+Elias Raphael,,Meier,831
 Elias,,Bricker,823
-Elias,,Maier,622
-Elias,,Meier,831
 Emilie,,Graff,832
 Eric,,Lecoultre,906
+Erich Peter,,Tschirky,21
 Erich,,Heynen,898
-Erich,,Tschirky,21
 Ernest,,Geiser,334
 Etienne,,Bütikofer,68
 Etrit,,Hasler,848
 Eva,,Schmassmann,437
 Eveline,,Rechsteiner,817
-Fabian,,Frauenfelder,690
+Fabian Mathias,,Frauenfelder,690
 Fabienne,,Thomas,851
 Fabio,,Gassmann,714
 Felix Michael,,Wirz,95
@@ -409,9 +409,9 @@ Franz,,Egle,384
 Franziska,,Lenz,641
 Gabriel,,Fischer,426
 Gabriel,,Rumo,915
-Gabriela,,Medici,846
+Gabriela Naemi,,Medici,846
 Gallus,,Cadonau,141
-Georg,,Umbricht,816
+Georg Carl,,Umbricht,816
 Georges,,Zünd,550
 Gérald,,Nicod,555
 Gian,,Brun,937
@@ -450,7 +450,7 @@ Jürg,,Staudenmann,554
 Károly Christian,Karoly,Köpe,301
 Kathy,,Steiner,808
 Kevin,,Grangier,425
-Konrad,,Studerus,195
+Konrad Thomas,,Studerus,195
 Kristina,,Lanz,753
 Kurt Heinrich,,Zollinger,670
 Kurt,,Gfeller,353
@@ -458,7 +458,7 @@ Laetitia,,Bettex,867
 Laura,,Kopp,648
 Lelia,,Hunziker,822
 Linda,,Strupler,936
-Lisa,,Vincenz,827
+Lisa Ruth,,Vincenz,827
 Livia Salome,,Aeschbach-Jauslin,567
 Lorenz,,Furrer,190
 Louis,,Perron,50
@@ -482,10 +482,10 @@ Marco,,Grüter,909
 Marco,,Taddei,32
 Margret,,Wasserfallen,243
 Maria Luisa,,Bernini Burkhard,167
+Martin Marcel,,Kuonen,89
 Martin,,Bossard,517
 Martin,,Dätwyler,316
 Martin,,Kaiser,952
-Martin,,Kuonen,89
 Martin,,Leschhorn Strebel,942
 Martin,,Rufer,142
 Martina Teresa,,Würth,689
@@ -493,9 +493,9 @@ Martina,,Novak,697
 Martina,,Vieli,609
 Martine,,Cottier-Chassot,972
 Massimo,,Suter,966
+Matthias Kaspar,,Hui,886
 Matthias P.A.,,Müller,963
 Matthias,,Dietrich,81
-Matthias,,Hui,886
 Matthias,,Humbel,835
 Max,,Hofmann,399
 Melo Esquerdo,,Falchi,976
@@ -507,9 +507,9 @@ Michael,,Geissbühler,584
 Michael,,Ineichen,918
 Michael,,Köpfli,977
 Michael,,Schmid,284
+Michel Alain,,Rudin,807
+Michel Joseph Paul,,Darbellay,302
 Michel Sandro,,Grunder,908
-Michel,,Darbellay,302
-Michel,,Rudin,807
 Michela,,Trisconi,356
 Michèle,,Andermatt,872
 Micole,,Gotti,926
@@ -529,7 +529,7 @@ Nicole,,Cornu,957
 Niklaus,,Wepfer,956
 Nils,,Epprecht,712
 Noémi,,Weber,860
-Océane,,Dayer,695
+Océane Camille Céline,,Dayer,695
 Oleg,,Gafner,843
 Olivier,,Fantino,735
 Olivier,,Mark,802
@@ -538,8 +538,8 @@ Patrick Olivier,,Eperon,234
 Patrick,,Hofstetter,125
 Patrick,,Mayer,478
 Patrizia,,Lehmann,821
+Paul Hugo,,Mori,727
 Paul Robert,,Waldmann,891
-Paul,,Mori,727
 Pentti,,Aellig,973
 Peter Alois,,Metzinger,884
 Peter Eugen Seraphin,,Saxenhofer,376
@@ -549,7 +549,7 @@ Philipp,,Mäder,935
 Philipp,,Niederberger,955
 Philipp,,Ryf,978
 Philippe David Martin,,Kühni,928
-Philippe,,Miauton,500
+Philippe Jean-Jacques,,Miauton,500
 Philippe,,Zahno,553
 Pierre,,Zwahlen,396
 Raimund,,Rodewald,214
@@ -561,7 +561,7 @@ Renate,,Hotz Schläpfer,123
 René,,Gerber,975
 René,,Jenny,617
 René,,Rall,251
-Reto,,Jaussi,479
+Reto Marc,,Jaussi,479
 Reto,,Vincenz,826
 Reto,,Wiesli,117
 Reto,,Wyss,662
@@ -587,21 +587,21 @@ Sarkis,,Shahinian,97
 Sébastien,,Leprat,653
 Silas,,Hobi,842
 Silvan,,Lipp,669
+Simon Paul Auguste,,Zurich,709
 Simon,,Banholzer,858
 Simon,,Binder,885
 Simon,,Gisler,962
-Simon,,Zurich,709
 Simona,,Kobel,868
 Simone,,Eggler,656
 Sonja,,Steinmann,834
 Sophie,,Achermann,699
 Sophie,,Haenni,812
 Soren Bo,,Henrichsen,911
+Stefan Andreas,,Jakob,137
 Stefan Michael,,Nünlist,406
 Stefan,,Batzli,349
 Stefan,,Brupbacher,844
 Stefan,,Flückiger,736
-Stefan,,Jakob,137
 Stefan,,Kunz,390
 Stefan,,Vannoni,80
 Stefano,,Kunz,663
@@ -613,7 +613,7 @@ Thomas,,Kähr,424
 Timotheus,,Bruderer,603
 Tobias Simon,,Vögeli,923
 Tobias,,König,899
-Ueli,,Stückelberger,237
+Ulrich Emanuel,Ueli,Stückelberger,237
 Ulrich Rudolf,,Frei,518
 Ulrich,,Keller,253
 Urban,,Hodel,840
