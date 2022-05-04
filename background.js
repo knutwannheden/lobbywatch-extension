@@ -14,40 +14,8 @@ chrome.commands.onCommand.addListener(async (command) => {
         chrome.tabs.sendMessage(tab.id, { action: 'select-next' });
     } else if (command === 'show-previous') {
         chrome.tabs.sendMessage(tab.id, { action: 'select-previous' });
-    } else if (command === 'show-previous') {
-        chrome.scripting.executeScript({
-            target: { tabId: tab.id },
-            func: moveSelection,
-            args: [-1]
-        });
     }
 });
-
-function moveSelection(dir) {
-    let elements = Array.from(document.getElementsByClassName('lw-person'));
-    current = elements.find(e => e.classList.contains('lw-selected'));
-    var element = null;
-    if (!current) {
-        element = elements[0];
-    } else {
-        element = elements[(elements.indexOf(current) + elements.length + dir) % elements.length];
-        // current.classList.toggle('lw-selected');
-        while (current !== undefined && current.classList !== undefined) {
-            current.classList.remove('lw-selected');
-            current = current.parentNode;
-        }
-    }
-    element.classList.add('lw-selected');
-    element.scrollIntoViewIfNeeded();
-
-    if (element.offsetParent === null) {
-        while (element !== undefined && element.offsetParent === null) {
-            element = element.parentNode;
-        }
-        element.classList.add('lw-selected');
-        element.scrollIntoViewIfNeeded();
-    }
-}
 
 chrome.webNavigation.onCompleted.addListener((details) => {
     chrome.storage.local.get("enabled", ({ enabled }) => {
