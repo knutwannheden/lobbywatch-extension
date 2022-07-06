@@ -14,6 +14,7 @@ function csv_to_regex_array(csv) {
         .map(n => n.replace(/î/, '[iî]'))
         .map(n => n.replace(/ò/, '[oò]'))
         .map(n => n.replace(/ô/, '[oô]'))
+        .map(n => n.replace(/'/, '[\'’]?'))
         .map(n => n.split(','))
         .filter(n => n.length === 4)
         .map(n => {
